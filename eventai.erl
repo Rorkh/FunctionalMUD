@@ -85,7 +85,7 @@ watchroom(Data)->%%pick a player then do room broadcast, that way always get atl
 		[{Players, Rooms}]=Data,
 		WPlayer = pickrandomfromList(Players),
 		WRooms = pickrandomfromList(room:getValidDoors(WPlayer, Rooms)),
-		Msg = "\r\n"++aCol:actioncol(pickrandomfromList(roomactivitylist()))++aCol:addcol({green, WRooms})++"\r\n",
+		Msg = "\r\n"++aCol:actioncol(pickrandomfromList(roomactivitylist()))++" "++aCol:addcol({green, WRooms})++"\r\n",
 		client_manager ! {watchroom, Msg, WPlayer#player.roomId}.
 		
 pickrandomfromList(List)->
@@ -100,6 +100,6 @@ echance(_Val) ->
 	false.
 
 roomactivitylist()->
-		["A noise can be heard from the ", "A strange scuffling noise is heard to the ", "You feel a dark presence near the ", "It feels as though you are being watched from the ", "A loud crash can be heard from the ", "Something is laughing near the "].
+		["A noise can be heard from the", "A strange scuffling noise is heard to the", "You feel a dark presence near the", "It feels as though you are being watched from the", "A loud crash can be heard from the", "Something is laughing near the"].
 playerwatchlist()->
 		["You feel a strange presence in the room...", "It feels as though something is watching you...", "A dark shadow glances past you...", "You hear a faint whispering noise...", "Something tugs on your foot..."].
