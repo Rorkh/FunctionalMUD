@@ -20,7 +20,7 @@
 %% @end
 %%--------------------------------------------------------------------
 handle_events(Data, T)->
-	random:seed(now()),%%randomize asap
+	_ = rand:seed(exs1024s),%%randomize asap
 	receive
 		{update, NData}->
 			handle_events(NData, 12000);%%super speed timeout to try ensure data not old
@@ -44,7 +44,7 @@ attemptevent(Data)->
 		[]->updateme();
 		[{[], Rooms}] when length(Rooms)/=0 ->updateme();
 		[{[],[]}]->updateme();
-		[{_Players, _Rooms}]->case echance(random:uniform(100)) of%% 25% to do event after 5 seconds 
+		[{_Players, _Rooms}]->case echance(rand:uniform(100)) of%% 25% to do event after 5 seconds 
 							true->createevent(Data);
 							false->ok
 						end
@@ -67,7 +67,7 @@ updateme()-> client_manager ! {updateme}.
 %% @end
 %%--------------------------------------------------------------------
 createevent(Data)->%%event types
-	case random:uniform(2) of%%
+	case rand:uniform(2) of%%
 		1->%%Watching a player
 			watchplayer(Data);
 		2->%%notify room of activity
@@ -90,7 +90,7 @@ watchroom(Data)->%%pick a player then do room broadcast, that way always get atl
 		
 pickrandomfromList(List)->
 	Length = length(List),
-	lists:nth(random:uniform(Length), List).
+	lists:nth(rand:uniform(Length), List).
 	
 	
 	

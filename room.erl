@@ -72,7 +72,7 @@ getItemSearchSuccess(Player, Rooms)->
 	ITEMS = [ITEMS || {room, _Title, _Descrpt, ID, _DE, _DW, _DN, _DS, ITEMS}<-Rooms,ID==Player#player.roomId],
 	case ITEMS of
 			[empty]->-1;
-			_->random:uniform(3)		
+			_->rand:uniform(3)		
 		end.	
 
 	

@@ -26,7 +26,7 @@ st()->start(1024).
 %%Primary starting method
 start(Port)->
 	io:fwrite("Server attempting startup... ~n"),
-	random:seed(now()),
+	_ = rand:seed(exs1024s),
 	case gen_tcp:listen(Port, ?TCP_OPTIONS) of
 		{ok, LSocket}->
 						io:fwrite("Server started on port: ~p~n",[Port]),

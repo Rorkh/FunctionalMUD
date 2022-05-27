@@ -49,12 +49,12 @@ getItemD(Item)->
 %%Attacking functions
 %1 miss, 2 hit, 3 hit, 4 fumble, 5 crit
 attemptattack()->
-	case random:uniform(5) of
+	case rand:uniform(5) of
 		1->{miss};
 		2->{hit};
 		3->{hit};
 		4->{fumble};
-		5-> case random:uniform(3) of
+		5-> case rand:uniform(3) of
 				1->{smallc};
 				2->{smallc};
 				3->{bigc}
@@ -75,10 +75,10 @@ getWeapDamage(Weapon)->
 
 getAttackD(Player, Attack)->
 	case Attack of
-		{hit}->getWeapDamage(Player#player.weapon)+random:uniform(3);
-		{fumble}->random:uniform(3)-1;%%fumble the attack: 0-2 
-		{smallc}->getWeapDamage(Player#player.weapon)+random:uniform(2)+3;
-		{bigc}->getWeapDamage(Player#player.weapon)+random:uniform(4)+3;
+		{hit}->getWeapDamage(Player#player.weapon)+rand:uniform(3);
+		{fumble}->rand:uniform(3)-1;%%fumble the attack: 0-2 
+		{smallc}->getWeapDamage(Player#player.weapon)+rand:uniform(2)+3;
+		{bigc}->getWeapDamage(Player#player.weapon)+rand:uniform(4)+3;
 		{miss}->0
 	end.
 	
